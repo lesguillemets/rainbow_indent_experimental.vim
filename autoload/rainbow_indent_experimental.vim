@@ -2,10 +2,12 @@ let s:cpo_backup = &cpo
 set cpo&vim
 
 function! rainbow_indent_experimental#prepare()
-  hi RainbowIndentLevel1 guibg=#2c3911
-  hi RainbowIndentLevel2 guibg=#11392c
-  hi RainbowIndentLevel3 guibg=#111139
-  hi RainbowIndentLevel4 guibg=#39112c
+  let s:indent_colors = get(g:, 'rainbow_indent_experimental_colors',
+        \  [ '#2c3911', '#11392c', '#111139', '#39112c'])
+  let s:max_levels = len(s:indent_colors)
+  for i in range(s:max_levels)
+    execute 'hi RainbowIndentLevel' . (i+1) . ' guibg=' . s:indent_colors[i]
+  endfor
 endfunction
 
 function! rainbow_indent_experimental#init_color()
