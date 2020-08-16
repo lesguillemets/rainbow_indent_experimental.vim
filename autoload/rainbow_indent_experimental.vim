@@ -16,7 +16,7 @@ function! rainbow_indent_experimental#init_color()
   else
     let l:indentation = '\t'
   endif
-  for level in range(1,4)
+  for level in range(1,s:max_levels)
     call matchadd('RainbowIndentLevel' . level , '^\zs' . repeat(l:indentation, level)  .  '\ze\(\S\|$\)')
   endfor
 endfunction
