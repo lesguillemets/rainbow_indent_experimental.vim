@@ -8,16 +8,26 @@ function! rainbow_indent_experimental#prepare()
   for i in range(s:max_levels)
     execute 'hi RainbowIndentLevel' . (i+1) . ' guibg=' . s:indent_colors[i]
   endfor
+  let b:rainbow_indent_experimental_matches = []
 endfunction
 
 function! rainbow_indent_experimental#init_color()
+  for match_id in b:rainbow_indent_experimental_matches
+    " remove matches that will be duplicate
+    call matchdelete(match_id)
+  endfor
+  let b:rainbow_indent_experimental_matches = []
   if &expandtab
     let l:indentation = repeat(' ', &sw)
   else
     let l:indentation = '\t'
   endif
   for level in range(1,s:max_levels)
-    call matchadd('RainbowIndentLevel' . level , '^\zs' . repeat(l:indentation, level)  .  '\ze\(\S\|$\)')
+    call add(b:rainbow_indent_experimental_matches,
+    \ matchadd(
+    \ 'RainbowIndentLevel' . level ,
+    \ '^\zs' . repeat(l:indentation, level)  .  '\ze\(\S\|$\)'
+    \ ))
   endfor
 endfunction
 
