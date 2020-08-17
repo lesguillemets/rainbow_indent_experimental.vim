@@ -3,7 +3,7 @@ set cpo&vim
 
 function! rainbow_indent_experimental#prepare()
   let s:indent_colors = get(g:, 'rainbow_indent_experimental_colors',
-        \  [ '#2c3911', '#11392c', '#111139', '#39112c'])
+        \  [ '#2c3911', '#11392c', '#111139', '#2c1139', '#39112c'])
   let s:max_levels = len(s:indent_colors)
   for i in range(s:max_levels)
     execute 'hi RainbowIndentLevel' . (i+1) . ' guibg=' . s:indent_colors[i]
