@@ -4,6 +4,8 @@ endif
 let s:cpo_backup = &cpo
 set cpo&vim
 
+call rainbow_indent_experimental#init()
+
 augroup Rainbow_Indent_Experimental
   autocmd!
   autocmd ColorScheme * call rainbow_indent_experimental#prepare()
