@@ -21,6 +21,12 @@ function! rainbow_indent_experimental#prepare()
 endfunction
 
 function! rainbow_indent_experimental#init_color()
+  for match_id in get(w:, 'rainbow_indent_experimental_matches', [])
+    " remove matches that will be duplicate
+    call matchdelete(match_id)
+  endfor
+  let w:rainbow_indent_experimental_matches = []
+
   if s:rainbow_indent_experimental_default_on
     if index(s:rainbow_indent_experimental_filetypes_off, &ft) >= 0
       " verbose but less confusing?
@@ -32,18 +38,13 @@ function! rainbow_indent_experimental#init_color()
     endif
   endif
 
-  for match_id in get(b:, 'rainbow_indent_experimental_matches', [])
-    " remove matches that will be duplicate
-    call matchdelete(match_id)
-  endfor
-  let b:rainbow_indent_experimental_matches = []
   if &expandtab
     let l:indentation = repeat(' ', &sw)
   else
     let l:indentation = '\t'
   endif
   for level in range(1,s:max_levels)
-    call add(b:rainbow_indent_experimental_matches,
+    call add(w:rainbow_indent_experimental_matches,
     \ matchadd(
     \ 'RainbowIndentLevel' . level ,
     \ '^\zs' . repeat(l:indentation, level)  .  '\ze\(\S\|$\)'
