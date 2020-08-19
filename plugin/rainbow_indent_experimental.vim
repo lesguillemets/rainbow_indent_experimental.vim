@@ -12,7 +12,7 @@ augroup Rainbow_Indent_Experimental
 
   autocmd Filetype * call rainbow_indent_experimental#init_color()
   autocmd VimEnter * call rainbow_indent_experimental#init_color()
-  autocmd OptionSet shiftwidth call rainbow_indent_experimental#init_color()
+  autocmd OptionSet shiftwidth,expandtab call rainbow_indent_experimental#init_color()
 augroup END
 let g:loaded_rainbow_indent_experimental=1
 
