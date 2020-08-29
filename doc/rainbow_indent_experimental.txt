@@ -33,4 +33,11 @@ g:rainbow_indent_experimental_colors       *g:rainbow_indent_experimental_colors
     set to the length of this list.
     default: ['#2c3911', '#11392c', '#111139', '#2c1139', '#39112c']
 
+g:rainbow_indent_experimental_colors_fg       *g:rainbow_indent_experimental_colors_fg*
+    List of colors (as read by vim's |highlight-guibg| format) for
+    highlighting the foreground. Only useful when you use listchars.
+    When given less number of colours than |g:rainbow_indent_experimental_colors|,
+    this list wraps.
+    default: [ '#0f0f0f' ]
+
 vim:tw=78:ts=8:ft=help:norl:noet:fen:
