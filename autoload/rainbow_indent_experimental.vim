@@ -14,9 +14,12 @@ endfunction
 function! rainbow_indent_experimental#prepare()
   let s:indent_colors = get(g:, 'rainbow_indent_experimental_colors',
         \  [ '#2c3911', '#11392c', '#111139', '#2c1139', '#39112c'])
+  let s:indent_colors_fg = get(g:,'rainbow_indent_experimental_colors_fg',
+        \ [ '#0f0f0f' ])
   let s:max_levels = len(s:indent_colors)
+  let s:fg_len = len(s:indent_colors_fg)
   for i in range(s:max_levels)
-    execute 'hi RainbowIndentLevel' . (i+1) . ' guibg=' . s:indent_colors[i]
+    execute 'hi RainbowIndentLevel' . (i+1) . ' guibg=' . s:indent_colors[i] . ' guifg=' . s:indent_colors_fg[i % s:fg_len]
   endfor
 endfunction
 
