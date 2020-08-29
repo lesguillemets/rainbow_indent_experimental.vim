@@ -31,7 +31,7 @@ g:rainbow_indent_experimental_colors       *g:rainbow_indent_experimental_colors
     List of colors (as read by vim's |highlight-guibg| format) for
     highlighting indentation. The maximum level of indentation highlighted is
     set to the length of this list.
-    default: ['#2c3911', '#11392c', '#111139', '#2c1139', '#39112c']
+    default: ['#153640','#07190d','#0a201f','#062b23','#023432']
 
 g:rainbow_indent_experimental_colors_fg       *g:rainbow_indent_experimental_colors_fg*
     List of colors (as read by vim's |highlight-guibg| format) for
